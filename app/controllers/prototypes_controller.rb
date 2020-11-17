@@ -1,7 +1,7 @@
 class PrototypesController < ApplicationController
   before_action :set_prototype, only: [:edit, :show, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :not_sign, only: [:edit, :new, :update, :destroy]
+  before_action :not_sign, only: [:edit, :update, :destroy]
 
   def index
     @prototypes = Prototype.all
@@ -17,7 +17,7 @@ class PrototypesController < ApplicationController
     if @prototype.save
       redirect_to root_path
     else
-      render :index
+      render :new
     end 
   end
 
